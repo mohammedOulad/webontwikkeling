@@ -1,11 +1,18 @@
 let veelvouden = new Array();
 
 for (let i = 0; i < 70; i++)
-    {  
-        if (getallen[i] % 7 === 0)
+{   
+        veelvouden[i] = i+1;
+        if (veelvouden[i] % 7 === 0)
     {
-        console.log(getallen[i]);
-        let teller = 70 +(i+1);
-        veelvouden[i] = teller;  
+        console.log(veelvouden[i]);
     }
+}
+for (let i = 0; i < 70; i++)
+{   
+        veelvouden[i] = i+1;
+        if ((veelvouden[i] % 3 === 0 || veelvouden[i] % 5 === 0))
+    {
+        console.log(veelvouden[i]);
     }
+}
