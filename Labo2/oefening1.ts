@@ -13,7 +13,7 @@ for (let i = 0; i < 100; i++)
     }
 for (let i = 0; i < 100; i++)
 {
-    if (getallen[i] % 2 === 0)
+    if (getallen[i] % 3 === 0)
     {
     console.log(getallen[i]);
     }
