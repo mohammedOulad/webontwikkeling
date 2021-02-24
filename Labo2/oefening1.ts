@@ -1,15 +1,20 @@
-let getallen = new Array(100);
-for (let i = 99; i < 200; i++)
+let getallen = new Array();
+
+for (let i = 0; i < 100; i++)
     {  
-        getallen[i] = i + 1; 
+        let teller = 100 +(i+1);
+        getallen[i] = teller; 
+        
     }
-while(getallen.length <= 200)
+    while(getallen.length <= 100)
     {
         console.log(getallen);
         break;
     }
-    for (let i = 99; i < 200; i++)
-    {  
-        if(getallen[i] % 2 ==0)
-        getallen[i] = i + 1; 
+for (let i = 0; i < 100; i++)
+{
+    if (getallen[i] % 2 === 0)
+    {
+    console.log(getallen[i]);
     }
+}   
