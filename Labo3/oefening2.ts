@@ -4,7 +4,8 @@ function reverseString  (a) {
     {
         reversedWord += a[i];
     }
-    return a;
+    return reversedWord;
     }
-    console.log(reverseString);
+    
+    console.log(reverseString("hello"));
    
