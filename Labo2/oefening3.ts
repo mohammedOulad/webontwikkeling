@@ -20,5 +20,5 @@ for (let i = 0; i < 70; i++)
 {   
     veelvouden[i] = (veelvouden[i] = i+1);
     ((veelvouden[i] % 3 === 0 || veelvouden[i] % 5 === 0) && !(veelvouden[i] % 3 === 0 && veelvouden[i] % 5 === 0)) 
-      ? console.log(veelvouden[i]) : ""
+      ? console.log(veelvouden[i]) : null;
 }
