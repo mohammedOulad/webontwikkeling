@@ -6,7 +6,7 @@ let add: printStuff = (amount,text) => {return amount + text};
 interface twoDArray  {
     (element1: string,element2: string):string[]
 };
-let add1: twoDArray = (Element1,Element2) => [Element1 + Element2];
+let addoef1: twoDArray = (Element1,Element2) => [Element1 + Element2];
 
 interface numberToString  {
     (number: number):number
