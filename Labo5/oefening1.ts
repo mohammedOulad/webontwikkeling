@@ -23,3 +23,5 @@ const twoDArray = (element1: string, element2: string): string[] => {
 const numberToString = (number: number): string => {
     return `${number}`;
 }
+
+printStuff(2,"corsair")

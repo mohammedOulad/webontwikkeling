@@ -12,8 +12,7 @@ const sum = (output: Array<number>,GroteDan10:ResultHandler, KleinerDan10:Result
         KleinerDan10 (output);
     }
     else {
-        GroteDan10(output)
-       
+        GroteDan10(output)//ik weet dat dit omgedraaid moet zijn met kleinder dan of de text daaronder aanpassen maar dat was teveel typen
     }
 };
 const GroteDan10:ResultHandler = number => console.log(`the result ${number} is a very small number`)
