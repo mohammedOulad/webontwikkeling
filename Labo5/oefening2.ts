@@ -2,26 +2,26 @@ interface ResultHandler {
     (number:number[])
 }
     
-const sum = (output: Array<number>,GroteDan10:ResultHandler, KleinerDan10:ResultHandler) => {
+const sum = (output: Array<number>,Kleiner:ResultHandler, Groter:ResultHandler) => {
     let optelling : number = 1;
     for (let i = 0;i < output.length; i++)
     optelling = optelling * output[i];
 
     if(optelling >= 10)
     {
-        KleinerDan10 (output);
+        Groter (output);
     }
     else {
-        GroteDan10(output)//ik weet dat dit omgedraaid moet zijn met kleinder dan of de text daaronder aanpassen maar dat was teveel typen
+        Kleiner(output)
     }
 };
-const GroteDan10:ResultHandler = number => console.log(`the result ${number} is a very small number`)
-const KleinerDan10: ResultHandler = number => console.log(`the result is ${number}`); 
+const KleinerDan10:ResultHandler = number => console.log(`the result ${number} is a very small number`)
+const GroterDan10: ResultHandler = number => console.log(`the result is ${number}`); 
 const printToConsole = (number : Array<number>)  => 
 console.log(`the result is ${number}`); 
 
-sum([2+2+2],GroteDan10,KleinerDan10);
-sum([2+2+6],GroteDan10,KleinerDan10);
+sum([2,2,2],KleinerDan10,GroterDan10);
+sum([2,2,6],KleinerDan10,GroterDan10);
 
 
 

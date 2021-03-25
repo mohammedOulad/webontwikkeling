@@ -4,7 +4,6 @@ interface Calculation {
 const optellen:Calculation = (a,b) => a+b;
 const multi:Calculation = (a,b) => a*b;
 const typeOfCal = (optellen:Calculation,multi:Calculation) => {
-
 }
 
 const printCalculationResult = (a:number,b:number,typeOfCal:Calculation) => {
