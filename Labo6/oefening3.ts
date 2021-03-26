@@ -15,7 +15,12 @@ let starterPokemonGen2 : Pokemon[]  = [
     {name: 'Totodile', xp: 45, type: 'water'}
 ];
 let starters:Pokemon[] = [...starterPokemonGen1,...starterPokemonGen2]
-console.log(starters)
+//console.log(starters)
 let names:string[] = starters.map(names1=>names1.name)
-console.log(names)
+//console.log(names)
+let weakPokemon:Pokemon[] = starters.filter(weakPokemonXp=>{if(weakPokemonXp.xp<40)
+ return console.log(weakPokemonXp)
+}
+)
+
 export {};
