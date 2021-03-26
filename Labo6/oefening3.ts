@@ -19,8 +19,17 @@ let starters:Pokemon[] = [...starterPokemonGen1,...starterPokemonGen2]
 let names:string[] = starters.map(names1=>names1.name)
 //console.log(names)
 let weakPokemon:Pokemon[] = starters.filter(weakPokemonXp=>{if(weakPokemonXp.xp<40)
- return console.log(weakPokemonXp)
-}
-)
+ return console.log(weakPokemonXp)})
+
+ let weakPokemonNames:string[] = starters
+ .filter(weakPokemonXp=>weakPokemonXp.xp<40)
+ .map(weakPokemonNames1=>weakPokemonNames1.name)
+console.log(weakPokemonNames)
+
+let sumOfAllXp = starters.reduce((sum, total) => sum + total.xp,0
+);
+console.log(sumOfAllXp);
+
+
 
 export {};
