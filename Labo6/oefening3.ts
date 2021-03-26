@@ -30,7 +30,7 @@ let sumOfAllXp = starters.reduce((sum, total) => sum + total.xp,0
 );
 console.log(sumOfAllXp);
 
-let strongestPokemon = starters.reduce((total)=>total);
+let strongestPokemon = starters.reduce((sum,now,index,strongest)=> sum = strongest[1] && strongest[4]);
 console.log(strongestPokemon)
 
 
@@ -39,4 +39,10 @@ let sumOfAllXpOfWeakPokemon = starters
 .reduce((sum,total)=>sum+total.xp,0)
 console.log(sumOfAllXpOfWeakPokemon)
 
+let sortedStarters = starters.sort((a,b) =>{
+    if(a.xp>b.xp) return 1;
+    if(a.xp<b.xp) return -1;
+    return 0;
+});
+console.log(sortedStarters)
 export {};
