@@ -17,7 +17,7 @@ const slowDiv = (a: number, b: number) => {
     return new Promise<number>((resolve, reject) => {
         
         
-        if(a/b === 0)
+        if((a/b) != 0)
         {
         setTimeout(() => {
             resolve(a/b);
