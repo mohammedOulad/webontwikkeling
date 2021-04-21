@@ -13,3 +13,6 @@ const slowMult = (a: number, b: number) => {
         },1500)
     });
 }
+slowSum(1,5).then((result: number => {console.log(`1 + 5`)});
+
+export{};
