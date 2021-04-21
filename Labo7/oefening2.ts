@@ -7,9 +7,8 @@ let b:any = fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=1100
 let c:any = fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11002').then((response:any) => response.json());
 
 Promise.all([a,b,c]).then((drinks: any) => {
-    console.log(drinks);
     for (let drink of drinks) {
-        console.log(drinks.drink[0].strDrink);
+        console.log(drink.drinks[0].strDrink);
     }
 });
 export{};
