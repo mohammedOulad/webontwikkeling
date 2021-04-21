@@ -23,7 +23,7 @@ const slowDiv = (a: number, b: number) => {
             resolve(a/b);
         },2000)
     }
-        else{
+        else if ((a/b) === 0){
             reject("You cannot divide by zero")
         }
     });
@@ -36,7 +36,7 @@ slowDiv(6,3).then((resultDiv:number )=> {
         console.error(err);
     });
     
-slowDiv(6,0).then((resultDiv:number )=> {
+slowDiv(0,6).then((resultDiv:number )=> {
         console.log(`6 / 0 = ${resultDiv}`)})
         .catch(err =>{
             console.error(err);
