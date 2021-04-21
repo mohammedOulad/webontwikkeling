@@ -7,6 +7,9 @@ const showAllDadJokes = async() => {
         'Accept': 'application/json'
         }
     });
+    let jokesJson = await jokes.json();
     
-
+    console.log(jokesJson)
+}
+}
  export{};
