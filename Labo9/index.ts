@@ -25,7 +25,6 @@ app.get('/whoamijson',(req:any,res:any)=>{
     res.json(thisisme);
 });
 
-
 app.get('/pikachujson',(req:any,res:any)=>{
     let pikachuFetch = fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
     .then((res:any) => res.json())
@@ -34,7 +33,6 @@ app.get('/pikachujson',(req:any,res:any)=>{
         res.json(pikachu)
     })
 });
-
 app.get('/pikachuhtml',(req:any,res:any)=>{
     let pikachuFetch1 = fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
     .then((res:any) => res.json())
