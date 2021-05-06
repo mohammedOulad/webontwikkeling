@@ -1,22 +1,33 @@
-import { profile} from "node:console";
-
 const express = require('express');
 const app = express();
 const ejs = require('ejs');
 const fetch = require('node-fetch');
 app.set('port', 3000);
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
-let movies = [
-    {name: "The Matrix", myScore: 90},
-    {name: "Pulp Fuction", myScore: 100},
-    {name: "Monster Hunter", myScore: 5},
-    {name: "Blade Runner", myScore: 100}
-];
-app.get('/',(req:any,res:any)=>{  // root res type html t
+app.get('/',(req:any,res:any)=>{  
     res.type('text/html');
-    res.send('zats absolutly crazy')
+    res.render('landingpage')
 });
+app.get('/movies',(req:any,res:any)=>{  
+    res.render('movies')
+});
+app.get('/header',(req:any,res:any)=>{  
+    res.render('header')
+});
+
+
+
+
+
+/*
+app.post('/addmovie',(req:any, res:any)=>{
+    let title = req.body.fname;
+    let myScore = req.body.lname;
+    res.type('text/html')
+    res.send(`Hello ${title} ${myScore}`);
+})*/
 
 app.listen(app.get('port'), 
     ()=>console.log( '[server] http://localhost:' + app.get('port')));

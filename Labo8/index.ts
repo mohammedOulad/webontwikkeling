@@ -1,9 +1,7 @@
-import { profile} from "node:console";
-
 const express = require('express');
-const app = express();
 const ejs = require('ejs')
 const fetch = require('node-fetch')
+const app = express();
 app.set('port', 3000);
 app.set('view engine', 'ejs');
 
@@ -13,9 +11,11 @@ const thisisme = {
     age: 22,
     profilePic: 'https://www.nautiljon.com/images/description/00/04/1584134379085_image.jpg'
 };
-app.get('/',(req:any,res:any)=>{  // root res type html t
+
+
+app.get('/',(req:any,res:any)=>{  
     res.type('text/html');
-    res.send('zats absolutly crazy')
+    res.render('hello')
 });
 app.get('/whoami',(req:any,res:any)=>{
     res.type('text/html');
@@ -25,27 +25,23 @@ app.get('/whoamijson',(req:any,res:any)=>{
     res.json(thisisme);
 });
 
+let pikachuu: any= undefined;
+
+fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
+    .then((res:any) => res.json())
+    .then((json:any) =>{
+        pikachuu = json;
+    })
 
 app.get('/pikachujson',(req:any,res:any)=>{
-    let pikachuFetch = fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
-    .then((res:any) => res.json())
-    .then((json:any) =>{
-        let pikachu = json;
-        res.json(pikachu)
-    })
-});
+        res.json(pikachuu)
+    });
 
 app.get('/pikachuhtml',(req:any,res:any)=>{
-    let pikachuFetch1 = fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
-    .then((res:any) => res.json())
-    .then((json:any) =>{
-        let pikachu = json;
-        res.type('text/html');
-        res.render('pikachu', pikachu);
-})
+        res.render('pikachu', pikachuu);
 });
 
 app.listen(app.get('port'), 
     ()=>console.log( '[server] http://localhost:' + app.get('port')));
 
-export{}
+export{};
