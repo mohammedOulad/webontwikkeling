@@ -6,6 +6,7 @@ app.set('port', 3000);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+
 app.get('/',(req:any,res:any)=>{  
     res.type('text/html');
     res.render('landingpage')
@@ -16,8 +17,6 @@ app.get('/movies',(req:any,res:any)=>{
 app.get('/header',(req:any,res:any)=>{  
     res.render('header')
 });
-
-
 
 
 

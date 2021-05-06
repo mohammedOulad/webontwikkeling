@@ -1,2 +1,22 @@
 <%- include('header'); %>
 
+let movies = [
+    {name: "The Matrix", myScore: 90},
+    {name: "Pulp Fuction", myScore: 100},
+    {name: "Monster Hunter", myScore: 5},
+    {name: "Blade Runner", myScore: 100}
+];
+<ul>
+    <%
+    movies.foreach((movie) => {
+    
+        <li
+                 <%= movie.name + " " + movie.myScore %>
+        </li>
+    
+    })
+    %>
+</ul>
+
+
+<a href='/'> landingpage</a>
