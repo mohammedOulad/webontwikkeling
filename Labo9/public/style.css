@@ -1,3 +1,43 @@
+body {
+    background-color: grey;
+  }
+  .home_photo{
+      width: 500px;
+      align-items: center;;
+  }
 img{
     width: 350px;
 }
+p{
+    text-align: left;
+}
+.home_div {
+    align-items: center;
+    width: 420px;
+    margin: 25px;
+    font-size: 35px;
+  }
+  .para_div {
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+    margin: 25px;
+    font-size: 35px;
+  }
+  .ani{
+    font-family: Arial;
+    text-decoration: honeydew;
+    text-decoration: xx-large;
+  }
+  .anime_movie
+  {
+    align-items: center;
+      width: 450px;
+  }
+  .links{
+      font: serif;
+      font-size: xx-large;
+      font-family: sans-serif;
+      color:black;
+  }

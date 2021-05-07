@@ -11,16 +11,16 @@ const thisisme = {
     age: 22,
     profilePic: 'https://www.nautiljon.com/images/description/00/04/1584134379085_image.jpg'
 };
-
+app.get('/whoami',(req:any,res:any)=>{
+    res.type('text/html');
+    res.render('whoami',{name: thisisme.name, age: thisisme.age, profilePic:thisisme.profilePic})
+});
 
 app.get('/',(req:any,res:any)=>{  
     res.type('text/html');
     res.render('hello')
 });
-app.get('/whoami',(req:any,res:any)=>{
-    res.type('text/html');
-    res.render('whoami',{name: thisisme.name, age: thisisme.age, profilePic:thisisme.profilePic})
-});
+
 app.get('/whoamijson',(req:any,res:any)=>{
     res.json(thisisme);
 });

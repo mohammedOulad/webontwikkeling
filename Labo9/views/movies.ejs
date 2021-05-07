@@ -1,22 +1,17 @@
 <%- include('header'); %>
-
-let movies = [
-    {name: "The Matrix", myScore: 90},
-    {name: "Pulp Fuction", myScore: 100},
-    {name: "Monster Hunter", myScore: 5},
-    {name: "Blade Runner", myScore: 100}
-];
+<div>
+    <img class= "anime_movie" src="/Anime_logo.png"/>
+    <h3>Anime Series</h3>
+</div>
+<div>
 <ul>
-    <%
-    movies.foreach((movie) => {
-    
-        <li
-                 <%= movie.name + " " + movie.myScore %>
-        </li>
-    
-    })
-    %>
+    <% animes.forEach((anime) =>{  %> 
+    <li> 
+        <a class="ani" href='/movie/<%= title %>'>  <%= anime.name %> <%= anime.myScore %>  </a>
+    </li>
+<%  }); %>
 </ul>
-
-
-<a href='/'> landingpage</a>
+</div>
+<a class="links"  href='/movie'>Anime Toevoegen</a>
+</body>
+</html>   
