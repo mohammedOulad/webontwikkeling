@@ -1,9 +1,9 @@
 body {
-    background-color: grey;
+    background-color: darkslategray;
   }
   .home_photo{
-      width: 500px;
-      align-items: center;;
+      width: 600px;
+      
   }
 img{
     width: 350px;
@@ -28,7 +28,8 @@ p{
   .ani{
     font-family: Arial;
     text-decoration: honeydew;
-    text-decoration: xx-large;
+    font-size:xx-large;
+    color: yellowgreen;
   }
   .anime_movie
   {
@@ -61,4 +62,7 @@ p{
   .topnav a.active {
     background-color: #04AA6D;
     color: white;
+  }
+  p{
+    font-size: 25px;
   }
