@@ -6,10 +6,8 @@
 <div>
 <ul>
     <% movies.forEach((anime,id) =>{  %> 
-    <li> 
-    <a 
-        class="ani" href='/movies/<%=id%>' >  <%= anime.name %> <%= anime.myScore %> 
-    </a>
+    <li>
+    <a class="ani" href='/movies/<%=id%>' >  <%= anime.name %> <%= anime.myScore %> </a>
     </li>
 <%  }); %>
 </ul>

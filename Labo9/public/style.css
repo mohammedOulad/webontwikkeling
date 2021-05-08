@@ -1,9 +1,14 @@
 body {
     background-color: darkslategray;
   }
+.classroom{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
   .home_photo{
       width: 600px;
-      
   }
 img{
     width: 350px;
