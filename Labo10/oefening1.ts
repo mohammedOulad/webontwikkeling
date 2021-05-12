@@ -1,11 +1,12 @@
-const {MongoClient} = require('mongodb');
-const uri = "mongodb+srv://Droide123:Droide123@webontwikkelingcluster.b7i1j.mongodb.net/webontwikkelingcluster?retryWrites=true&w=majority";
+const { MongoClient } = require("mongodb");
+const uri =
+  "mongodb+srv://Droide123:Droide123@webontwikkelingcluster.b7i1j.mongodb.net/webontwikkelingcluster?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useUnifiedTopology: true });
 
 interface MoviesData {
-    name: string;
-    myScore: number;
-    timesViewed: number;
+  name: string;
+  myScore: number;
+  timesViewed: number;
 }
 
 /*let movies : MoviesData[] = [
@@ -19,31 +20,33 @@ interface MoviesData {
 ];*/
 
 const connectClient = async () => {
-    try {
-        await client.connect();
-        //let list = await client.db().admin().listDatabase();
-        //console.log(list);
-        
-        //await client.db('WebOntwikkeling').collection('Movies').insertMany(movies); insert many movies in mongodb 
-       
-        // let result = await client.db('WebOntwikkeling').collection('Movies').findOne({});
-        // console.log(result); toont de eerste film in de db
-        let cursor = await client.db('WebOntwikkeling').collection('Movies')
-        .find({});
-        let result2 = await cursor.toArray();
-        console.log(result2[0]);
-    
-    }
-    catch(e)
-    {
-        console.log(e);
-    }
-    finally{
-        await client.close();
-    }
+  try {
+    await client.connect();
+    //let list = await client.db().admin().listDatabase();
+    //console.log(list);
+
+    //await client.db('WebOntwikkeling').collection('Movies').insertMany(movies); insert many movies in mongodb
+
+    // let result = await client.db('WebOntwikkeling').collection('Movies').findOne({});
+    // console.log(result); toont de eerste film in de db
+    let cursor = await client
+      .db("WebOntwikkeling")
+      .collection("Movies")
+      .find({})
+      .sort({ myScore: -1 });
+    let result2 = await cursor.toArray();
+    for (let i = 0; i < result2.length; i++) {
+        console.log(result2[i].myScore);
+      }
+  } catch (e) {
+    console.log(e);
+  } finally {
+    await client.close();
+  }
 };
 connectClient();
 
+export {};
 
 
-export{};
+
