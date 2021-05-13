@@ -29,15 +29,23 @@ const connectClient = async () => {
 
     // let result = await client.db('WebOntwikkeling').collection('Movies').findOne({});
     // console.log(result); toont de eerste film in de db
-    let cursor = await client
-      .db("WebOntwikkeling")
-      .collection("Movies")
-      .find({})
-      .sort({ myScore: -1 });
+    /* let cursor = await client.db("WebOntwikkeling").collection("Movies").find({});
     let result2 = await cursor.toArray();
     for (let i = 0; i < result2.length; i++) {
         console.log(result2[i].myScore);
-      }
+        }*/ //toont een lijst van alle scores van alle films
+
+    let cursor = await client
+      .db("WebOntwikkeling")
+      .collection("Movies")
+      .find({});
+    let result2 = await cursor.toArray();
+    for (let i = 0; i < result2.length; i++) {
+        let somTimesViewed =+ result2[i].timesViewed
+      console.log(somTimesViewed);
+    }
+
+
   } catch (e) {
     console.log(e);
   } finally {
@@ -48,5 +56,49 @@ connectClient();
 
 export {};
 
-
-
+interface Coin {
+  name: string;
+  value: number;
+}
+const coins: Coin[] = [
+  { name: "DOGE", value: 0.42 },
+  { name: "BTC", value: 43000 },
+  { name: "ELONGATE", value: 0.000005 },
+];
+(async () => {
+  try {
+    await client.connect();
+    let list = await client.db().admin().listDatabases();
+    console.log(list);
+    await client.db("Demo").collection("Coins").deleteMany({});
+    await client
+      .db("Demo")
+      .collection("Coins")
+      .insertOne({ name: "SAFEMOON", value: 0.00004 });
+    await client.db("Demo").collection("Coins").insertMany(coins);
+    let result: Coin[] = await client
+      .db("Demo")
+      .collection("Coins")
+      .find({})
+      .toArray();
+    for (let i = 0; i < result.length; i++) {
+      console.log(result[i].name);
+    }
+    console.log("-------");
+    let result2: Coin = await client.db("Demo").collection("Coins").findOne({});
+    console.log(result2.name);
+    console.log("-------");
+    let result3: Coin[] = await client
+      .db("Demo")
+      .collection("Coins")
+      .find({ value: { $gt: 30, $lt: 85 } })
+      .toArray();
+    for (let i = 0; i < result3.length; i++) {
+      console.log(result3[i].name);
+    }
+  } catch (e) {
+    console.log(e);
+  } finally {
+    await client.close();
+  }
+})();
