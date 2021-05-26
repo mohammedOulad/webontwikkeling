@@ -36,8 +36,8 @@ const connectClient = async () => {
     let cursor = await client.db("WebOntwikkeling").collection("Movies").find({});
     let result2 = await cursor.toArray();
     for (let i = 0; i < result2.length; i++) {
-        console.log(result2[i].name);}
-        */
+        console.log(result2[i].name);}*/
+        
 
     /*Toont de som van totaal aantal keer bekeken
     let cursor = await client.db("WebOntwikkeling").collection("Movies").find({});
@@ -51,7 +51,8 @@ const connectClient = async () => {
     let result2 = await cursor.toArray();
     for (let i = 0; i < result2.length; i++) {
     console.log(result2[i].name);}
-        */
+*/
+
     let cursor = await client.db("WebOntwikkeling").collection("Movies")
     .find({$or:[ {myScore: { $gte: 30, $lte: 85 } }, {timesViewed: {$eq: 1} } ]});
 

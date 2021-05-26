@@ -31,7 +31,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
     .then((res:any) => res.json())
     .then((json:any) =>{
         pikachuu = json;
-    })
+    }).catch((error:any) => {console.log(error)})
 
 app.get('/pikachujson',(req:any,res:any)=>{
         res.json(pikachuu)
