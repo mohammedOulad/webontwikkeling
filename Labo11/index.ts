@@ -16,15 +16,15 @@ app.use(express.static("public"));
 interface MoviesData {
   name: string;
   myScore: number;
-  timesViewed: number;
+  ranking: number;
 }
 
-let movieData: any = undefined;
+let movieData: MoviesData[] = [];
+
 
 const connectClient = async () => {
   try {
     await client.connect();
-
     movieData = await client
       .db("WebOntwikkeling")
       .collection("Movies")
@@ -35,12 +35,21 @@ const connectClient = async () => {
       console.log(
         movieData[i].name,
         movieData[i].myScore,
-        movieData[i].timesViewed
+        movieData[i].ranking
       );
+
+
+      movieData = await client
+            .db("WebOntwikkeling")
+            .collection("Movies")
+            .deleteOne();
     }
-  } catch (e) {
+
+  } 
+  catch (e) {
     console.log(e);
-  } finally {
+  } 
+  finally {
     await client.close();
   }
 };
@@ -52,7 +61,7 @@ app.get("/movies/:id", (req: any, res: any) => {
   res.render("movie", {
     naam: movieData[id].name,
     score: movieData[id].myScore,
-    timesViewed: movieData[id].timesViewed
+    ranking: movieData[id].ranking
   });
 });
 
@@ -68,10 +77,13 @@ app.get("/", (req: any, res: any) => {
 app.get("/addMovie", (req: any, res: any) => {
   res.render("addMovie");
 });
+app.get("/removeMovie", (req: any, res: any) => {
+    res.render("removeMovie");
+  });
 
 app.post("/addMovie", (req: any, res: any) => {
   res.render("addMovie");
-  movieData.push({ name: req.body.title, myScore: req.body.score });
+  movieData.push({ name: req.body.title, myScore: req.body.score, ranking: req.body.score });
 });
 
 app.listen(app.get("port"), () =>
