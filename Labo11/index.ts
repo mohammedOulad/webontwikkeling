@@ -44,15 +44,18 @@ connectClient();
 const getMovies = async () => {
   try {
     await client.connect();
-    let movies = await client.db("WebOntwikkeling").collection("Movies").find({}).toArray();
-    console.log(movies);
-    return movies;
+    movie = await client.db("WebOntwikkeling").collection("Movies").find({}).toArray();
+    console.log(movie);
+    return movie;
   } catch (e) {
     console.log(e);
   }
+  finally {
+    await client.close();
+  }
 };
 
-const removeMovies= async (name: string) => {
+const removeMovies = async (name: string) => {
   try {
     await client.connect();
     await client.db("WebOntwikkeling").collection("Movies").deleteOne({ "name": name });
@@ -60,42 +63,15 @@ const removeMovies= async (name: string) => {
     console.log(error)
   }
 };
-
-app.get("/removeMovie/:name", async (req: any, res: any) => {
-  let removeMovie = await removeMovies(req.params.name)
-  res.render("movies");
+app.get("/", (req: any, res: any) => {
+  res.type("text/html");
+  res.render("landingpage");
 });
-
-app.get("/addMovie", async (req: any, res: any) => {
-  let movie = await getMovies();
-  //let movie: MovieData | undefined = await addMovie(id);
-  res.render("addMovie", { movies: movie });
-});
-
-app.post('/addMovie', async (req: any, res: any) => {
-  let name =req.body.name;
-  let myScore =req.body.myScore;
-  let ranking =req.body.Ranking;
-  let movie:MovieData = { name: name, myScore: myScore, ranking: ranking }
-  try {
-    await client.connect();
-    await client.db("WebOntwikkeling").collection("Movies").insertOne(movie);
-  } catch (err) {
-    console.log(err)
-  }
-  finally{
-    await client.close();
-  }
-  res.redirect("/movies")
-})
 
 app.get("/movies/:id", async (req: any, res: any) => {
   let id = req.params.id;
-  // let name =req.body.name;
-  // let myScore =req.body.myScore;
-  // let ranking =req.body.Ranking;
   console.log(id);
-  res.render("movie", { name: movie[id].name , myScore: movie[id].myScore, ranking: movie[id].ranking });
+  res.render("movie", { name: movie[id].name, myScore: movie[id].myScore, ranking: movie[id].ranking });
 });
 
 app.get("/movies", async (req: any, res: any) => {
@@ -103,9 +79,32 @@ app.get("/movies", async (req: any, res: any) => {
   res.render("movies", { movies: movie });
 });
 
-app.get("/", (req: any, res: any) => {
-  res.type("text/html");
-  res.render("landingpage");
+app.get("/addMovie", async (req: any, res: any) => {
+  res.render("addMovie");
+});
+
+app.post('/addMovie', async (req: any, res: any) => {
+  let name = req.body.name;
+  let myScore = req.body.myScore;
+  let ranking = req.body.ranking;
+  let movie: MovieData = { name: name, myScore: myScore, ranking: ranking }
+  try {
+    await client.connect();
+    await client.db("WebOntwikkeling").collection("Movies").insertOne(movie);
+  } catch (err) {
+    console.log(err)
+  }
+  finally {
+    await client.close();
+  }
+  res.redirect("/movies")
+})
+
+app.get("/removeMovie/:name", async (req: any, res: any) => {
+  let name = req.params.name;
+  console.log(name);
+  await removeMovies(name)
+  res.redirect("/movies");
 });
 
 app.listen(app.get("port"), () =>
