@@ -7,7 +7,7 @@
 <ul>
     <% movies.forEach((anime,id) =>{  %> 
     <li>
-    <a class="ani" href='/movies/<%=id%>'> <%= anime.name %> <%= anime.myScore %>  <%= anime.ranking %>  <a class="links" href='/removeMovie/<%=id%>' >Anime Verwijderen</a>  </a>
+    <a class="ani" href='/movies/<%=id%>'> name: <%= anime.name %>  score:  <%= anime.myScore %> ranking: <%= anime.ranking %>   >Anime Verwijderen  </a>
     </li>
 <%  }); %>
 </ul>
